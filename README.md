@@ -27,7 +27,8 @@
 | `.gitignore` | Исключения git: секреты, кэши, локальные данные, `tmp/`, `.trash/` |
 | `.gitattributes` | Окончания строк: текстовые файлы хранятся с LF |
 | `doc/standards/` | Пакет стандартов проекта; копия хаба, только для чтения |
-| `doc/skills/` | Навыки агента: общие `glob-*` и проектные `pg-*`; реестр - `_index_skills_repo.md` |
+| `doc/skills/` | Общие навыки агента `glob-*`; реестр - `_index_skills_repo.md` |
+| `data/skills/` | Локальные навыки репозитория без префикса; индекс - `_index_skills_pl.md` |
 | `doc/specs/` | Спецификации репозитория: оверрайды, индекс, шаблоны |
 | `doc/specs/overrides.md` | Реестр согласованных отклонений репозитория от стандарта |
 | `doc/specs/_index_specs.md` | Индекс каталога спецификаций |
@@ -48,12 +49,16 @@
 
 ## Навыки
 
+Общие (реестр - `doc/skills/_index_skills_repo.md`):
+
 - `glob-update-indexes` - актуализация локальных индексов
 - `glob-skill-deploy` - деплой навыков в инструменты
 - `glob-audit-repository` - аудит репозитория на соответствие стандарту
 - `glob-cfg-pip` - настройка зеркала PyPI
 - `glob-skill-migrate-anthropic` - миграция навыков в формат SKILL.md
 - `glob-update-kilo-rules` - проверка конфигурации Kilo
-- `pg-search-sources` - порядок поиска источников решения учебных задач
 
-Полный реестр - `doc/skills/_index_skills_repo.md`.
+Локальные репозитория (реестр - `data/skills/_index_skills_pl.md`):
+
+- `search-sources` - порядок поиска источников решения учебных задач
+- `textbook` - пояснение к задачам в виде учебника
