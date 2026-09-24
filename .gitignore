@@ -27,15 +27,9 @@ input/*
 output/*
 !output/.gitkeep
 
-# локальные папки сессий (sessions/<session>/...)
-sessions/**/data/*
-!sessions/**/data/.gitkeep
-sessions/**/input/*
-!sessions/**/input/.gitkeep
-sessions/**/log/*
-!sessions/**/log/.gitkeep
-sessions/**/output/*
-!sessions/**/output/.gitkeep
+# Артефакты сессий коммитятся полностью: скриншоты, input/, output/, data/.
+# Проектовый оверрайд к разделу 06.01 - doc/specs/overrides.md.
+# Служебные каталоги (.venv/, __pycache__/, кэши) исключены правилами выше.
 
 # разовые артефакты - целиком, без .gitkeep
 tmp/
