@@ -21,7 +21,7 @@
 | `input/screenshots/` | Скриншоты задания: условие, пример, комментарий учителя |
 | `input/data/example_1.txt` | Входные данные примера: `456` |
 | `output/code/new_number.py` | Код решения задачи (финальный) |
-| `output/code/variants/` | Предыдущие варианты решения: `new_number_v1.py`, `new_number_v2.py` |
+| `output/code/variants/` | Предыдущие варианты решения: `new_number_01.py`, `new_number_02.py` |
 
 ## Точка входа
 
