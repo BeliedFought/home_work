@@ -2,10 +2,9 @@
 
 Задача: дано трехзначное число, получить число, образованное перестановкой
 второй и третьей цифр. Пример: 456 -> 465.
+
+Число обрабатывается как строка: деление и остаток не используются.
 """
 
-number = int(input())
-hundreds = number // 100
-tens = number // 10 % 10
-ones = number % 10
-print(hundreds * 100 + ones * 10 + tens)
+number = input()
+print(number[0] + number[2] + number[1])
