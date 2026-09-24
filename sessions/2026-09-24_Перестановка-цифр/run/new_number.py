@@ -4,27 +4,8 @@
 второй и третьей цифр. Пример: 456 -> 465.
 """
 
-
-def swap_last_two_digits(number: int) -> int:
-    """Поменять местами вторую и третью цифры трехзначного числа.
-
-    Args:
-        number: трехзначное целое число.
-
-    Returns:
-        Число с переставленными второй и третьей цифрами.
-    """
-    hundreds = number // 100
-    tens = number // 10 % 10
-    ones = number % 10
-    return hundreds * 100 + ones * 10 + tens
-
-
-def main() -> None:
-    """Прочитать трехзначное число и вывести число с перестановкой цифр."""
-    number = int(input())
-    print(swap_last_two_digits(number))
-
-
-if __name__ == "__main__":
-    main()
+number = int(input())
+hundreds = number // 100
+tens = number // 10 % 10
+ones = number % 10
+print(hundreds * 100 + ones * 10 + tens)
