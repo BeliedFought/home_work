@@ -2,7 +2,7 @@
 
 Задача с автоматической проверкой. Источник: school.mos.ru, Информатика, тема «Линейные алгоритмы. Работа с целыми числами», задача №1.
 
-Исходные скриншоты условия - постоянные артефакты сессии: `doc/screenshots/task_condition.jpg`, `doc/screenshots/task_example.jpg`, `doc/screenshots/task_teacher_comment.jpg`. Исходные имена в загрузках Telegram: `photo_2026-09-24_21-34-27.jpg`, `photo_2026-09-24_21-34-30.jpg`, `photo_2026-09-24_21-34-33.jpg`.
+Исходные скриншоты условия - входящие материалы задания: `input/task_condition.jpg`, `input/task_example.jpg`, `input/task_teacher_comment.jpg`. Исходные имена в загрузках Telegram: `photo_2026-09-24_21-34-27.jpg`, `photo_2026-09-24_21-34-30.jpg`, `photo_2026-09-24_21-34-33.jpg`.
 
 ---
 
@@ -18,6 +18,8 @@
 | № теста | Вход | Выход |
 |---------|------|-------|
 | 1 | 456 | 465 |
+
+Файлы примера: вход `input/example_1.txt` (`456`), вывод программы `output/example_1.txt` (`465`).
 
 ## Ограничения
 
