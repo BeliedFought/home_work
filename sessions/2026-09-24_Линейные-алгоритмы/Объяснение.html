@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Как решали задачи</title>
+<style>
+  :root {
+    --bg: #eef2f9;
+    --card: #ffffff;
+    --ink: #1e2633;
+    --muted: #5c6878;
+    --accent: #2f6fed;
+    --accent-2: #7aa7ff;
+    --accent-soft: #e8f0ff;
+    --warm: #d98c00;
+    --warm-soft: #fff4dd;
+    --green: #1f8f4e;
+    --green-soft: #e6f6ec;
+    --code-bg: #101a2b;
+    --code-ink: #e8eefb;
+    --line: #d8e1ef;
+    --radius: 16px;
+    --shadow: 0 6px 24px rgba(24, 43, 84, 0.08);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    line-height: 1.65;
+  }
+  .page { max-width: 920px; margin: 0 auto; padding: 28px 18px 72px; }
+  .cover {
+    background: linear-gradient(135deg, #2f6fed, #6aa0ff);
+    color: #ffffff;
+    border-radius: 22px;
+    padding: 38px 34px;
+    box-shadow: var(--shadow);
+    margin-bottom: 26px;
+  }
+  .cover h1 { margin: 0 0 10px; font-size: 34px; line-height: 1.2; }
+  .cover p { margin: 0; color: #e6efff; font-size: 17px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .chip {
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 14px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px 26px 28px;
+    box-shadow: var(--shadow);
+    margin-bottom: 22px;
+  }
+  .card h2 { margin: 0 0 6px; font-size: 24px; }
+  .kicker {
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+  h3 { font-size: 18px; margin: 22px 0 8px; }
+  p { margin: 10px 0; }
+  .lead { color: var(--muted); }
+  .glossary { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 14px; }
+  .term { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; background: #fbfcff; }
+  .term .name { font-family: "Consolas", "Menlo", monospace; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-ink);
+    border-radius: 12px;
+    padding: 16px 18px;
+    overflow-x: auto;
+    font-family: "Consolas", "Menlo", monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 14px 0;
+  }
+  p code, li code, td code {
+    background: #eef2f9;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1px 6px;
+    font-family: "Consolas", "Menlo", monospace;
+    font-size: 0.95em;
+  }
+  .flow { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
+  .node { border: 2px solid var(--accent); background: var(--accent-soft); border-radius: 12px; padding: 10px 14px; font-weight: 600; }
+  .node.out { border-color: var(--green); background: var(--green-soft); }
+  .arrow { color: var(--muted); font-size: 22px; }
+  .digits { display: flex; gap: 10px; }
+  .digit {
+    width: 52px;
+    height: 60px;
+    border: 2px solid var(--line);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: 700;
+    background: #ffffff;
+  }
+  .digit.swap { border-color: var(--warm); background: var(--warm-soft); }
+  .digit.move { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
+  .row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin: 10px 0; }
+  .row-label { width: 76px; color: var(--muted); font-size: 14px; }
+  .eq { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 12px; font-size: 18px; font-weight: 600; }
+  .pill { background: var(--accent-soft); border: 1px solid var(--accent-2); border-radius: 10px; padding: 6px 12px; }
+  .pill.res { background: var(--green-soft); border-color: var(--green); color: var(--green); }
+  .bar { display: flex; border-radius: 12px; overflow: hidden; border: 2px solid var(--line); margin: 14px 0; }
+  .bar .seg { padding: 14px 10px; font-weight: 700; text-align: center; }
+  .bar .meters { flex: 256; background: var(--accent-soft); color: var(--accent); }
+  .bar .cm { flex: 10; background: var(--warm-soft); color: #8a5c00; min-width: 74px; }
+  .note { color: var(--muted); font-size: 14px; }
+  ol.steps, ul.plain { padding-left: 22px; }
+  ol.steps li, ul.plain li { margin: 6px 0; }
+  footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 26px; }
+  @media (max-width: 560px) {
+    .cover { padding: 28px 22px; }
+    .cover h1 { font-size: 26px; }
+    .card { padding: 20px; }
+    .digit { width: 44px; height: 52px; font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="cover">
+    <div class="kicker">Учебное объяснение</div>
+    <h1>Как решали задачи</h1>
+    <p>Разбор трех задач простым языком: что просили, как получили ответ и что означает каждая строчка кода.</p>
+    <div class="chips">
+      <span class="chip">Задача 1. Новое число</span>
+      <span class="chip">Задача 2. Цифры числа</span>
+      <span class="chip">Задача 3. Метры и сантиметры</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Слова, которые встретятся</h2>
+      <p class="lead">Короткий словарь перед разбором.</p>
+      <div class="glossary">
+        <div class="term">
+          <div class="name">Переменная</div>
+          Коробка с именем. В нее можно положить значение, а потом достать. Например, в коробке <code>A</code> лежит то, что ввели.
+        </div>
+        <div class="term">
+          <div class="name">input()</div>
+          Команда «прочитай то, что написали с клавиатуры». Получается текст, по-программистски - строка.
+        </div>
+        <div class="term">
+          <div class="name">int()</div>
+          Команда «преврати текст в целое число», чтобы можно было считать.
+        </div>
+        <div class="term">
+          <div class="name">str()</div>
+          Команда «преврати число обратно в текст», чтобы склеить его с другими кусочками.
+        </div>
+        <div class="term">
+          <div class="name">print()</div>
+          Команда «покажи на экране».
+        </div>
+        <div class="term">
+          <div class="name">Склеивание через +</div>
+          Соединяет кусочки в один. Например, <code>"ма" + "ма"</code> дает <code>"мама"</code>.
+        </div>
+        <div class="term">
+          <div class="name">A[0], A[1], A[2]</div>
+          Символы текста <code>A</code> по порядку. Счет с нуля: <code>A[0]</code> - первый символ, <code>A[1]</code> - второй, <code>A[2]</code> - третий.
+        </div>
+        <div class="term">
+          <div class="name">//</div>
+          Деление нацело. Показывает, сколько целых раз одно число помещается в другое.
+        </div>
+        <div class="term">
+          <div class="name">%</div>
+          Остаток от деления. Показывает, сколько осталось после деления нацело.
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="kicker">Задача 1</div>
+      <h2>Новое число</h2>
+      <p><strong>Что просили.</strong> Дано трехзначное число. Надо поменять местами вторую и третью цифры. Пример: из <code>456</code> должно получиться <code>465</code>.</p>
+      <p><strong>Как решали.</strong> Число можно читать как текст. Тогда каждая цифра - это отдельный символ. У числа <code>456</code> первый символ <code>4</code>, второй <code>5</code>, третий <code>6</code>. Надо поставить их в порядке: первый, третий, второй.</p>
+      <h3>Схема</h3>
+      <div class="flow">
+        <span class="node">Ввод: 456</span>
+        <span class="arrow">→</span>
+        <span class="node">Меняем 2-ю и 3-ю цифры</span>
+        <span class="arrow">→</span>
+        <span class="node out">Вывод: 465</span>
+      </div>
+      <div class="row">
+        <span class="row-label">Было</span>
+        <div class="digits">
+          <span class="digit">4</span>
+          <span class="digit swap">5</span>
+          <span class="digit swap">6</span>
+        </div>
+      </div>
+      <div class="row">
+        <span class="row-label">Стало</span>
+        <div class="digits">
+          <span class="digit">4</span>
+          <span class="digit move">6</span>
+          <span class="digit move">5</span>
+        </div>
+      </div>
+      <p class="note">Оранжевым выделены цифры, которые меняются местами; синим - они же после перестановки.</p>
+      <h3>Код</h3>
+      <pre><code>A = input()
+B = A[0] + A[2] + A[1]
+print(B)</code></pre>
+      <h3>Что происходит по строчкам</h3>
+      <ol class="steps">
+        <li><code>A = input()</code> - читаем число. Пока это текст, например <code>"456"</code>.</li>
+        <li><code>B = A[0] + A[2] + A[1]</code> - берем первый символ, потом третий, потом второй и склеиваем: <code>"4" + "6" + "5"</code> дает <code>"465"</code>. Результат кладем в коробку <code>B</code>.</li>
+        <li><code>print(B)</code> - показываем, что получилось.</li>
+      </ol>
+      <p><strong>Главная мысль.</strong> Мы ничего не считали, а переставили символы. Код получился короткий.</p>
+    </section>
+
+    <section class="card">
+      <div class="kicker">Задача 2</div>
+      <h2>Цифры числа</h2>
+      <p><strong>Что просили.</strong> Дано четырехзначное число. Поменять вторую и третью цифры, а потом показать сумму исходного и нового чисел в виде <code>2561+2651=5212</code>.</p>
+      <p><strong>Как решали.</strong> Так же, как в первой задаче: цифры - это символы. Только их теперь четыре. Меняем второй и третий символы, получаем новое число. Потом складываем два числа.</p>
+      <h3>Схема</h3>
+      <div class="flow">
+        <span class="node">Ввод: 2561</span>
+        <span class="arrow">→</span>
+        <span class="node">Новое число: 2651</span>
+        <span class="arrow">→</span>
+        <span class="node out">Сумма: 5212</span>
+      </div>
+      <div class="row">
+        <span class="row-label">Было</span>
+        <div class="digits">
+          <span class="digit">2</span>
+          <span class="digit swap">5</span>
+          <span class="digit swap">6</span>
+          <span class="digit">1</span>
+        </div>
+      </div>
+      <div class="row">
+        <span class="row-label">Стало</span>
+        <div class="digits">
+          <span class="digit">2</span>
+          <span class="digit move">6</span>
+          <span class="digit move">5</span>
+          <span class="digit">1</span>
+        </div>
+      </div>
+      <div class="eq">
+        <span class="pill">2561</span>
+        <span>+</span>
+        <span class="pill">2651</span>
+        <span>=</span>
+        <span class="pill res">5212</span>
+      </div>
+      <h3>Код</h3>
+      <pre><code>A = input()
+B = A[0] + A[2] + A[1] + A[3]
+print(A + "+" + B + "=" + str(int(A) + int(B)))</code></pre>
+      <h3>Что происходит по строчкам</h3>
+      <ol class="steps">
+        <li><code>A = input()</code> - читаем число <code>"2561"</code>.</li>
+        <li><code>B = A[0] + A[2] + A[1] + A[3]</code> - переставляем второй и третий символы: <code>"2" + "6" + "5" + "1"</code> дает <code>"2651"</code>.</li>
+        <li><code>print(...)</code> - собираем ответ: исходное число, знак <code>+</code>, новое число, знак <code>=</code>, сумма. Сумму считаем как <code>int(A) + int(B)</code>, затем делаем из нее текст.</li>
+      </ol>
+      <p><strong>Почему нужен int.</strong> Складывать текст нельзя: <code>"2561" + "2651"</code> даст <code>"25612651"</code>, а нужна сумма. Поэтому текст превращаем в числа, складываем и снова делаем текстом.</p>
+    </section>
+
+    <section class="card">
+      <div class="kicker">Задача 3</div>
+      <h2>Метры и сантиметры</h2>
+      <p><strong>Что просили.</strong> Дано расстояние в сантиметрах. Найти, сколько в нем целых метров и сколько сантиметров осталось. Пример: <code>25610</code> сантиметров - это <code>256</code> метров и <code>10</code> сантиметров, ответ <code>256м 10см</code>.</p>
+      <p><strong>Как решали.</strong> В одном метре сто сантиметров. Целых метров столько, сколько раз сто помещается в числе. Остаток сантиметров - это то, что не поместилось.</p>
+      <h3>Схема</h3>
+      <div class="flow">
+        <span class="node">Ввод: 25610 см</span>
+        <span class="arrow">→</span>
+        <span class="node">25610 // 100 = 256</span>
+        <span class="arrow">→</span>
+        <span class="node out">256м 10см</span>
+      </div>
+      <div class="bar">
+        <div class="seg meters">256 м</div>
+        <div class="seg cm">10 см</div>
+      </div>
+      <p class="note">Полоска показывает, как 25610 сантиметров делятся на целые метры и остаток сантиметров. 1 метр - это 100 сантиметров.</p>
+      <h3>Код</h3>
+      <pre><code>A = int(input())
+B = A // 100
+C = A % 100
+print(str(B) + "м " + str(C) + "см")</code></pre>
+      <h3>Что происходит по строчкам</h3>
+      <ol class="steps">
+        <li><code>A = int(input())</code> - читаем число сантиметров и превращаем его в целое число.</li>
+        <li><code>B = A // 100</code> - сколько целых метров.</li>
+        <li><code>C = A % 100</code> - сколько сантиметров осталось.</li>
+        <li><code>print(...)</code> - показываем: число метров, буквы <code>м</code>, число сантиметров, буквы <code>см</code>. Числа превращаем в текст через <code>str()</code> и склеиваем с буквами.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>Пояснение к задачам сессии «Линейные алгоритмы»</footer>
+</div>
+</body>
+</html>
