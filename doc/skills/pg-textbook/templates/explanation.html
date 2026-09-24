@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Как решали задачи</title>
+<style>
+  :root {
+    --bg: #eef2f9;
+    --card: #ffffff;
+    --ink: #1e2633;
+    --muted: #5c6878;
+    --accent: #2f6fed;
+    --accent-2: #7aa7ff;
+    --accent-soft: #e8f0ff;
+    --warm: #d98c00;
+    --warm-soft: #fff4dd;
+    --green: #1f8f4e;
+    --green-soft: #e6f6ec;
+    --code-bg: #101a2b;
+    --code-ink: #e8eefb;
+    --line: #d8e1ef;
+    --radius: 16px;
+    --shadow: 0 6px 24px rgba(24, 43, 84, 0.08);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    line-height: 1.65;
+  }
+  .page { max-width: 920px; margin: 0 auto; padding: 28px 18px 72px; }
+  .cover {
+    background: linear-gradient(135deg, #2f6fed, #6aa0ff);
+    color: #ffffff;
+    border-radius: 22px;
+    padding: 38px 34px;
+    box-shadow: var(--shadow);
+    margin-bottom: 26px;
+  }
+  .cover h1 { margin: 0 0 10px; font-size: 34px; line-height: 1.2; }
+  .cover p { margin: 0; color: #e6efff; font-size: 17px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .chip {
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 14px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px 26px 28px;
+    box-shadow: var(--shadow);
+    margin-bottom: 22px;
+  }
+  .card h2 { margin: 0 0 6px; font-size: 24px; }
+  .kicker {
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+  h3 { font-size: 18px; margin: 22px 0 8px; }
+  p { margin: 10px 0; }
+  .lead { color: var(--muted); }
+  .glossary { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 14px; }
+  .term { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; background: #fbfcff; }
+  .term .name { font-family: "Consolas", "Menlo", monospace; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-ink);
+    border-radius: 12px;
+    padding: 16px 18px;
+    overflow-x: auto;
+    font-family: "Consolas", "Menlo", monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 14px 0;
+  }
+  p code, li code, td code {
+    background: #eef2f9;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1px 6px;
+    font-family: "Consolas", "Menlo", monospace;
+    font-size: 0.95em;
+  }
+  .flow { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
+  .node { border: 2px solid var(--accent); background: var(--accent-soft); border-radius: 12px; padding: 10px 14px; font-weight: 600; }
+  .node.out { border-color: var(--green); background: var(--green-soft); }
+  .arrow { color: var(--muted); font-size: 22px; }
+  .digits { display: flex; gap: 10px; }
+  .digit {
+    width: 52px;
+    height: 60px;
+    border: 2px solid var(--line);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: 700;
+    background: #ffffff;
+  }
+  .digit.swap { border-color: var(--warm); background: var(--warm-soft); }
+  .digit.move { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
+  .row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin: 10px 0; }
+  .row-label { width: 76px; color: var(--muted); font-size: 14px; }
+  .eq { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 12px; font-size: 18px; font-weight: 600; }
+  .pill { background: var(--accent-soft); border: 1px solid var(--accent-2); border-radius: 10px; padding: 6px 12px; }
+  .pill.res { background: var(--green-soft); border-color: var(--green); color: var(--green); }
+  .bar { display: flex; border-radius: 12px; overflow: hidden; border: 2px solid var(--line); margin: 14px 0; }
+  .bar .seg { padding: 14px 10px; font-weight: 700; text-align: center; }
+  .bar .meters { flex: 256; background: var(--accent-soft); color: var(--accent); }
+  .bar .cm { flex: 10; background: var(--warm-soft); color: #8a5c00; min-width: 74px; }
+  .note { color: var(--muted); font-size: 14px; }
+  ol.steps, ul.plain { padding-left: 22px; }
+  ol.steps li, ul.plain li { margin: 6px 0; }
+  footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 26px; }
+  @media (max-width: 560px) {
+    .cover { padding: 28px 22px; }
+    .cover h1 { font-size: 26px; }
+    .card { padding: 20px; }
+    .digit { width: 44px; height: 52px; font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <!-- Обложка: заголовок и перечень задач сессии -->
+  <header class="cover">
+    <div class="kicker">Учебное объяснение</div>
+    <h1>Как решали задачи</h1>
+    <p>Разбор задач простым языком: что просили, как получили ответ и что означает каждая строчка кода.</p>
+    <div class="chips">
+      <span class="chip">Задача 1. Название</span>
+      <span class="chip">Задача 2. Название</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- Словарь понятий: общий для всех задач, оставить и дополнить по мере надобности -->
+    <section class="card">
+      <h2>Слова, которые встретятся</h2>
+      <p class="lead">Короткий словарь перед разбором.</p>
+      <div class="glossary">
+        <div class="term">
+          <div class="name">Переменная</div>
+          Коробка с именем. В нее можно положить значение, а потом достать.
+        </div>
+        <div class="term">
+          <div class="name">input()</div>
+          Команда «прочитай то, что написали с клавиатуры». Получается текст, по-программистски - строка.
+        </div>
+        <div class="term">
+          <div class="name">int()</div>
+          Команда «преврати текст в целое число», чтобы можно было считать.
+        </div>
+        <div class="term">
+          <div class="name">print()</div>
+          Команда «покажи на экране».
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция задачи: повторяется на каждую задачу сессии -->
+    <section class="card">
+      <div class="kicker">Задача N</div>
+      <h2>Название задачи</h2>
+      <p><strong>Что просили.</strong> Условие своими словами и пример.</p>
+      <p><strong>Как решали.</strong> Идея решения в двух-трех предложениях.</p>
+
+      <!-- Инфографика 1: блок-схема ввод - обработка - вывод -->
+      <h3>Схема</h3>
+      <div class="flow">
+        <span class="node">Ввод</span>
+        <span class="arrow">→</span>
+        <span class="node">Обработка</span>
+        <span class="arrow">→</span>
+        <span class="node out">Вывод</span>
+      </div>
+
+      <!-- Инфографика 2: схема цифр (для задач с цифрами); при ненадобности удалить -->
+      <div class="row">
+        <span class="row-label">Было</span>
+        <div class="digits">
+          <span class="digit">1</span>
+          <span class="digit swap">2</span>
+          <span class="digit swap">3</span>
+        </div>
+      </div>
+      <div class="row">
+        <span class="row-label">Стало</span>
+        <div class="digits">
+          <span class="digit">1</span>
+          <span class="digit move">3</span>
+          <span class="digit move">2</span>
+        </div>
+      </div>
+      <p class="note">Оранжевым - что меняется, синим - результат.</p>
+
+      <h3>Код</h3>
+      <pre><code>код решения</code></pre>
+
+      <h3>Что происходит по строчкам</h3>
+      <ol class="steps">
+        <li>Пояснение к строке кода.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>Пояснение к задачам сессии «Название сессии»</footer>
+</div>
+</body>
+</html>
