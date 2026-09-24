@@ -4,6 +4,8 @@
 
 Исходные скриншоты условия - входящие материалы задания: `input/screenshots/task_condition.jpg`, `input/screenshots/task_example.jpg`, `input/screenshots/task_teacher_comment.jpg`. Исходные имена в загрузках Telegram: `photo_2026-09-24_21-34-27.jpg`, `photo_2026-09-24_21-34-30.jpg`, `photo_2026-09-24_21-34-33.jpg`.
 
+Код, введенный на площадке: `input/screenshots/task_submitted_code.jpg` (исходное имя `photo_2026-09-24_22-25-30.jpg`).
+
 Результат проверки на площадке: `input/screenshots/task_result.jpg` (исходное имя `photo_2026-09-24_22-29-46.jpg`).
 
 ---
