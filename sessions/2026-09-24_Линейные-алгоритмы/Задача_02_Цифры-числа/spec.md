@@ -4,6 +4,8 @@
 
 Исходные скриншоты условия - входящие материалы задания: `input/screenshots/task_condition.jpg`, `input/screenshots/task_example.jpg`. Исходные имена в загрузках Telegram: `photo_2026-09-24_21-51-12.jpg`, `photo_2026-09-24_21-51-15.jpg`.
 
+Код, введенный на площадке: `input/screenshots/task_submitted_code.jpg` (исходное имя `photo_2026-09-24_22-37-35.jpg`); совпадает с финальным вариантом `output/code/Цифры-числа_03.py`.
+
 ---
 
 ## Условие
