@@ -38,6 +38,7 @@
 | `sessions/<session>/input/screenshots/` | Скриншоты задания (коммитится) |
 | `sessions/<session>/input/data/` | Входные данные задачи (коммитится) |
 | `sessions/<session>/output/code/` | Код решения задачи (коммитится) |
+| `sessions/<session>/output/code/variants/` | Предыдущие варианты решения, не удаляются (коммитится) |
 | `.trash/` | Карантин удаляемых файлов (локальная папка, не коммитится) |
 
 ## Навыки

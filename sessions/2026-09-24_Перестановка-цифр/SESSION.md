@@ -20,7 +20,8 @@
 | `doc/specs/spec_new-number.md` | Спецификация задачи: условие, пример, ограничения |
 | `input/screenshots/` | Скриншоты задания: условие, пример, комментарий учителя |
 | `input/data/example_1.txt` | Входные данные примера: `456` |
-| `output/code/new_number.py` | Код решения задачи |
+| `output/code/new_number.py` | Код решения задачи (финальный) |
+| `output/code/variants/` | Предыдущие варианты решения: `new_number_v1.py`, `new_number_v2.py` |
 
 ## Точка входа
 
