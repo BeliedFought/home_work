@@ -1,0 +1,47 @@
+.env
+.venv/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.vscode/
+.claude/
+.kilo
+.cursor
+web/var/
+
+# служебная обвязка opencode: кастомные tools коммитятся
+.opencode/*
+!.opencode/tools/
+
+# папки с локальным содержимым - коммитить только .gitkeep
+data/*
+!data/.gitkeep
+!data/skills/
+log/*
+!log/.gitkeep
+debug/*
+!debug/.gitkeep
+input/*
+!input/.gitkeep
+output/*
+!output/.gitkeep
+
+# локальные папки сессий (sessions/<session>/...)
+sessions/**/data/*
+sessions/**/input/*
+sessions/**/log/*
+sessions/**/output/*
+
+# разовые артефакты - целиком, без .gitkeep
+tmp/
+
+# карантин удаляемого - целиком, без .gitkeep
+.trash/
+
+# архивы .arch - на любой глубине, без .gitkeep
+.arch/
+
+# транзитная папка doc/
+doc/agent_questions/*
+!doc/agent_questions/.gitkeep
