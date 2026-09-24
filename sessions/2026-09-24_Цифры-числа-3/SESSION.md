@@ -20,7 +20,8 @@
 | `doc/specs/spec_digits-sum.md` | Спецификация задачи: условие, пример, ограничения |
 | `input/screenshots/` | Скриншоты задания: условие и область ответа |
 | `input/data/example_1.txt` | Входные данные примера: `2561` |
-| `output/code/new_number_sum.py` | Код решения задачи |
+| `output/code/new_number_sum.py` | Код решения задачи (финальный) |
+| `output/code/variants/` | Предыдущий вариант решения: `new_number_sum_01.py` |
 
 ## Точка входа
 
