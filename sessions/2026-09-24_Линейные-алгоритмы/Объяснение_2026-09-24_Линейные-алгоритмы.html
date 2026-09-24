@@ -121,6 +121,9 @@
   .bar .meters { flex: 256; background: var(--accent-soft); color: var(--accent); }
   .bar .cm { flex: 10; background: var(--warm-soft); color: #8a5c00; min-width: 74px; }
   .note { color: var(--muted); font-size: 14px; }
+  .out { font-family: "Consolas", "Menlo", monospace; font-size: 22px; font-weight: 700; margin: 8px 0; }
+  .gap-miss { display: inline-block; font-size: 12px; line-height: 22px; padding: 0 6px; background: #ffe1e1; border: 1px dashed #d9534f; border-radius: 4px; color: #b3261e; vertical-align: text-bottom; }
+  .gap-ok { display: inline-block; font-size: 12px; line-height: 22px; padding: 0 6px; background: #d9f2e3; border: 1px solid #1f8f4e; border-radius: 4px; color: #1f8f4e; vertical-align: text-bottom; }
   ol.steps, ul.plain { padding-left: 22px; }
   ol.steps li, ul.plain li { margin: 6px 0; }
   footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 26px; }
@@ -286,7 +289,7 @@ print(A + "+" + B + "=" + str(int(A) + int(B)))</code></pre>
     <section class="card">
       <div class="kicker">Задача 3</div>
       <h2>Метры и сантиметры</h2>
-      <p><strong>Что просили.</strong> Дано расстояние в сантиметрах. Найти, сколько в нем целых метров и сколько сантиметров осталось. Пример: <code>25610</code> сантиметров - это <code>256</code> метров и <code>10</code> сантиметров, ответ <code>256м 10см</code>.</p>
+      <p><strong>Что просили.</strong> Дано расстояние в сантиметрах. Найти, сколько в нем целых метров и сколько сантиметров осталось. Пример: <code>25610</code> сантиметров - это <code>256</code> метров и <code>10</code> сантиметров, ответ <code>256m 10cm</code>.</p>
       <p><strong>Как решали.</strong> В одном метре сто сантиметров. Целых метров столько, сколько раз сто помещается в числе. Остаток сантиметров - это то, что не поместилось.</p>
       <h3>Схема</h3>
       <div class="flow">
@@ -294,7 +297,7 @@ print(A + "+" + B + "=" + str(int(A) + int(B)))</code></pre>
         <span class="arrow">→</span>
         <span class="node">25610 // 100 = 256</span>
         <span class="arrow">→</span>
-        <span class="node out">256м 10см</span>
+        <span class="node out">256m 10cm</span>
       </div>
       <div class="bar">
         <div class="seg meters">256 м</div>
@@ -305,26 +308,32 @@ print(A + "+" + B + "=" + str(int(A) + int(B)))</code></pre>
       <pre><code>A = int(input())
 B = A // 100
 C = A % 100
-print(str(B) + "м " + str(C) + "см")</code></pre>
+print(str(B) + "m " + str(C) + "cm")</code></pre>
       <h3>Что происходит по строчкам</h3>
       <ol class="steps">
         <li><code>A = int(input())</code> - читаем число сантиметров и превращаем его в целое число.</li>
         <li><code>B = A // 100</code> - сколько целых метров.</li>
         <li><code>C = A % 100</code> - сколько сантиметров осталось.</li>
-        <li><code>print(...)</code> - показываем: число метров, буквы <code>м</code>, число сантиметров, буквы <code>см</code>. Числа превращаем в текст через <code>str()</code> и склеиваем с буквами.</li>
+        <li><code>print(...)</code> - показываем: число метров, буквы <code>m</code>, число сантиметров, буквы <code>cm</code>. Числа превращаем в текст через <code>str()</code> и склеиваем с буквами.</li>
       </ol>
     </section>
 
     <section class="card">
       <div class="kicker">Частая ошибка</div>
       <h2>Пропущенный пробел между метрами и сантиметрами</h2>
-      <p>Ожидаемый ответ: <span class="pill res">256м 10см</span>. Между метрами и сантиметрами стоит пробел, и он часть ответа.</p>
-      <h3>Неверно</h3>
-      <pre><code>print(str(B) + "м" + str(C) + "см")</code></pre>
-      <p class="note">Для 25610 выходит 256м10см, то есть без пробела. Автопроверка сравнивает вывод точно, символ за символом, поэтому такой ответ не примут.</p>
-      <h3>Верно</h3>
-      <pre><code>print(str(B) + "м " + str(C) + "см")</code></pre>
-      <p class="note">Пробел стоит внутри строки "м ", после буквы м. Тогда выходит 256м 10см.</p>
+      <p>Ожидаемый ответ: <span class="pill res">256m 10cm</span>. Между метрами и сантиметрами стоит пробел, и он часть ответа.</p>
+      <h3>Код</h3>
+      <p class="note">Неверно, пробел в строке пропущен:</p>
+      <pre><code>print(str(B) + "m" + str(C) + "cm")</code></pre>
+      <p class="note">Верно, в строке есть пробел после m:</p>
+      <pre><code>print(str(B) + "m " + str(C) + "cm")</code></pre>
+      <h3>Вывод</h3>
+      <p class="note">Неверно, между m и 10 пробела нет:</p>
+      <p class="out">256m<span class="gap-miss">нет</span>10cm</p>
+      <p class="note">Красный блок - место пропущенного пробела: его тут нет.</p>
+      <p class="note">Верно, пробел на месте:</p>
+      <p class="out">256m<span class="gap-ok">пробел</span>10cm</p>
+      <p class="note">Зеленый блок - пробел, он входит в ответ. Автопроверка сравнивает вывод точно, символ за символом.</p>
     </section>
   </main>
 

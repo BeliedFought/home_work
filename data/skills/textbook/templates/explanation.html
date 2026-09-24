@@ -121,6 +121,9 @@
   .bar .meters { flex: 256; background: var(--accent-soft); color: var(--accent); }
   .bar .cm { flex: 10; background: var(--warm-soft); color: #8a5c00; min-width: 74px; }
   .note { color: var(--muted); font-size: 14px; }
+  .out { font-family: "Consolas", "Menlo", monospace; font-size: 22px; font-weight: 700; margin: 8px 0; }
+  .gap-miss { display: inline-block; font-size: 12px; line-height: 22px; padding: 0 6px; background: #ffe1e1; border: 1px dashed #d9534f; border-radius: 4px; color: #b3261e; vertical-align: text-bottom; }
+  .gap-ok { display: inline-block; font-size: 12px; line-height: 22px; padding: 0 6px; background: #d9f2e3; border: 1px solid #1f8f4e; border-radius: 4px; color: #1f8f4e; vertical-align: text-bottom; }
   ol.steps, ul.plain { padding-left: 22px; }
   ol.steps li, ul.plain li { margin: 6px 0; }
   footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 26px; }
@@ -223,10 +226,12 @@
       <p>Ожидаемый ответ: <span class="pill res">верный вывод</span>.</p>
       <h3>Неверно</h3>
       <pre><code>неверный код</code></pre>
-      <p class="note">Что получается и почему это неверно.</p>
+      <p class="out">вывод<span class="gap-miss">нет</span>с ошибкой</p>
+      <p class="note">Красный блок - место проблемы, здесь элемента нет.</p>
       <h3>Верно</h3>
       <pre><code>верный код</code></pre>
-      <p class="note">Чем отличается и что получается.</p>
+      <p class="out">вывод<span class="gap-ok">пробел</span>верный</p>
+      <p class="note">Зеленый блок - проблемное место на месте.</p>
     </section>
     -->
   </main>
