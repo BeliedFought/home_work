@@ -18,15 +18,13 @@
 |------|------------|
 | `SESSION.md` | Маркер и паспорт сессии |
 | `doc/specs/spec_new-number.md` | Спецификация задачи: условие, пример, ограничения |
-| `input/task_condition.jpg` | Скриншот условия задания |
-| `input/task_example.jpg` | Скриншот примера входа и выхода |
-| `input/task_teacher_comment.jpg` | Скриншот комментария учителя |
-| `input/example_1.txt` | Входные данные примера: `456` |
-| `output/new_number.py` | Код решения задачи |
+| `input/screenshots/` | Скриншоты задания: условие, пример, комментарий учителя |
+| `input/data/example_1.txt` | Входные данные примера: `456` |
+| `output/code/new_number.py` | Код решения задачи |
 
 ## Точка входа
 
-`output/new_number.py`
+`output/code/new_number.py`
 
 ## Результаты
 
