@@ -29,9 +29,13 @@ output/*
 
 # локальные папки сессий (sessions/<session>/...)
 sessions/**/data/*
+!sessions/**/data/.gitkeep
 sessions/**/input/*
+!sessions/**/input/.gitkeep
 sessions/**/log/*
+!sessions/**/log/.gitkeep
 sessions/**/output/*
+!sessions/**/output/.gitkeep
 
 # разовые артефакты - целиком, без .gitkeep
 tmp/
