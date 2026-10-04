@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Как решали задачи</title>
+<style>
+  :root {
+    --bg: #eef2f9;
+    --card: #ffffff;
+    --ink: #1e2633;
+    --muted: #5c6878;
+    --accent: #2f6fed;
+    --accent-2: #7aa7ff;
+    --accent-soft: #e8f0ff;
+    --warm: #d98c00;
+    --warm-soft: #fff4dd;
+    --green: #1f8f4e;
+    --green-soft: #e6f6ec;
+    --code-bg: #101a2b;
+    --code-ink: #e8eefb;
+    --line: #d8e1ef;
+    --radius: 16px;
+    --shadow: 0 6px 24px rgba(24, 43, 84, 0.08);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    line-height: 1.65;
+  }
+  .page { max-width: 920px; margin: 0 auto; padding: 28px 18px 72px; }
+  .cover {
+    background: linear-gradient(135deg, #2f6fed, #6aa0ff);
+    color: #ffffff;
+    border-radius: 22px;
+    padding: 38px 34px;
+    box-shadow: var(--shadow);
+    margin-bottom: 26px;
+  }
+  .cover h1 { margin: 0 0 10px; font-size: 34px; line-height: 1.2; }
+  .cover p { margin: 0; color: #e6efff; font-size: 17px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .chip {
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 14px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px 26px 28px;
+    box-shadow: var(--shadow);
+    margin-bottom: 22px;
+  }
+  .card h2 { margin: 0 0 6px; font-size: 24px; }
+  .kicker {
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+  h3 { font-size: 18px; margin: 22px 0 8px; }
+  p { margin: 10px 0; }
+  .lead { color: var(--muted); }
+  .glossary { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 14px; }
+  .term { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; background: #fbfcff; }
+  .term .name { font-family: "Consolas", "Menlo", monospace; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-ink);
+    border-radius: 12px;
+    padding: 16px 18px;
+    overflow-x: auto;
+    font-family: "Consolas", "Menlo", monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 14px 0;
+  }
+  p code, li code, td code {
+    background: #eef2f9;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1px 6px;
+    font-family: "Consolas", "Menlo", monospace;
+    font-size: 0.95em;
+  }
+  .flow { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
+  .node { border: 2px solid var(--accent); background: var(--accent-soft); border-radius: 12px; padding: 10px 14px; font-weight: 600; }
+  .node.out { border-color: var(--green); background: var(--green-soft); }
+  .arrow { color: var(--muted); font-size: 22px; }
+  .row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin: 10px 0; }
+  .row-label { width: 76px; color: var(--muted); font-size: 14px; }
+  .pill { background: var(--accent-soft); border: 1px solid var(--accent-2); border-radius: 10px; padding: 6px 12px; }
+  .pill.res { background: var(--green-soft); border-color: var(--green); color: var(--green); }
+  .note { color: var(--muted); font-size: 14px; }
+  ol.steps, ul.plain { padding-left: 22px; }
+  ol.steps li, ul.plain li { margin: 6px 0; }
+  footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 26px; }
+  @media (max-width: 560px) {
+    .cover { padding: 28px 22px; }
+    .cover h1 { font-size: 26px; }
+    .card { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <!-- Обложка: заголовок и перечень задач сессии -->
+  <header class="cover">
+    <div class="kicker">Учебное объяснение</div>
+    <h1>Как решали задачи</h1>
+    <p>Разбор задачи простым языком: что просили, как записали логику игры словами и почему правил всего три.</p>
+    <div class="chips">
+      <span class="chip">Задача 1. Камень, ножницы, бумага</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- Словарь понятий -->
+    <section class="card">
+      <h2>Слова, которые встретятся</h2>
+      <p class="lead">Короткий словарь перед разбором.</p>
+      <div class="glossary">
+        <div class="term">
+          <div class="name">Алгоритм</div>
+          Понятная последовательность шагов, которая приводит к результату. Как рецепт: шаг за шагом - и готовое блюдо.
+        </div>
+        <div class="term">
+          <div class="name">Словесный алгоритм</div>
+          Алгоритм, записанный обычными словами, по пунктам, без кода. Именно так просят в этом задании.
+        </div>
+        <div class="term">
+          <div class="name">Ветвление</div>
+          Шаг-проверка «если предметы одинаковые, то ничья». Смотрят на ситуацию и выбирают одну из веток.
+        </div>
+        <div class="term">
+          <div class="name">Ничья</div>
+          Ситуация, когда победителя нет: оба игрока показали один и тот же предмет.
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция задачи -->
+    <section class="card">
+      <div class="kicker">Задача 1</div>
+      <h2>Победитель в игре «Камень, ножницы, бумага»</h2>
+      <p><strong>Что просили.</strong> Записать словами логику игры: как определить победителя, когда два игрока показали свои предметы.</p>
+      <p><strong>Как решали.</strong> Два игрока и три предмета - всего 3 × 3 = 9 возможных пар выбора. Чтобы не проверять все девять случаев по отдельности, правила записали симметрично: «предмет против предмета». Тогда достаточно ничьей и трех правил - они покрывают все девять пар.</p>
+
+      <!-- Инфографика 1: ход игры -->
+      <h3>Схема игры</h3>
+      <div class="flow">
+        <span class="node">Тайный выбор</span>
+        <span class="arrow">→</span>
+        <span class="node">Показ одновременно</span>
+        <span class="arrow">→</span>
+        <span class="node">Сравнение</span>
+        <span class="arrow">→</span>
+        <span class="node out">Результат</span>
+      </div>
+      <p class="note">Выбор делается тайно и показывается одновременно, иначе второй игрок подстроился бы под первый.</p>
+
+      <!-- Инфографика 2: круг побед -->
+      <h3>Круг побед</h3>
+      <div class="flow">
+        <span class="node">Бумага</span>
+        <span class="arrow">→</span>
+        <span class="node">Камень</span>
+        <span class="arrow">→</span>
+        <span class="node">Ножницы</span>
+        <span class="arrow">→</span>
+        <span class="node">Бумага</span>
+      </div>
+      <p class="note">Стрелка - «побеждает»: бумага накрывает камень, камень ломает ножницы, ножницы режут бумагу. Каждый предмет бьет одного соседа по кругу и проигрывает другому.</p>
+
+      <h3>Решение</h3>
+      <pre><code>Шаг 1. Каждый из двух игроков тайно от другого выбирает один из трех
+предметов: камень, ножницы или бумага.
+
+Шаг 2. По команде игроки одновременно показывают выбранные предметы.
+
+Шаг 3. Сравнить предметы игроков и определить результат по правилам:
+   - предметы одинаковые - ничья;
+   - бумага против камня - побеждает бумага (бумага накрывает камень);
+   - камень против ножниц - побеждает камень (камень ломает ножницы);
+   - ножницы против бумаги - побеждают ножницы (ножницы режут бумагу).
+
+Шаг 4. Объявить результат: ничья или имя победителя. Алгоритм завершен.</code></pre>
+
+      <h3>Что происходит по шагам</h3>
+      <ol class="steps">
+        <li>Шаги 1 и 2 - ввод данных: два тайных выбора и одновременный показ.</li>
+        <li>Шаг 3 - вся логика игры. Сначала проверка на ничью: предметы совпали - победителя нет. Если не совпали, работает одно из трех правил.</li>
+        <li>Шаг 4 - вывод результата: объявляем ничью или имя победителя.</li>
+      </ol>
+
+      <h3>Почему правил всего три, а комбинаций девять</h3>
+      <div class="row">
+        <span class="row-label">Ничья</span>
+        <span class="pill">камень + камень</span>
+        <span class="pill">ножницы + ножницы</span>
+        <span class="pill">бумага + бумага</span>
+        <span class="pill res">ничья</span>
+      </div>
+      <div class="row">
+        <span class="row-label">Правило 1</span>
+        <span class="pill">бумага</span>
+        против
+        <span class="pill">камень</span>
+        <span class="arrow">→</span>
+        <span class="pill res">побеждает бумага</span>
+      </div>
+      <div class="row">
+        <span class="row-label">Правило 2</span>
+        <span class="pill">камень</span>
+        против
+        <span class="pill">ножницы</span>
+        <span class="arrow">→</span>
+        <span class="pill res">побеждает камень</span>
+      </div>
+      <div class="row">
+        <span class="row-label">Правило 3</span>
+        <span class="pill">ножницы</span>
+        против
+        <span class="pill">бумага</span>
+        <span class="arrow">→</span>
+        <span class="pill res">побеждают ножницы</span>
+      </div>
+      <p class="note">Правила записаны не для конкретного игрока, а для пары предметов: «бумага против камня» срабатывает и когда бумагу показал игрок 1, и когда игрок 2. Три правила плюс три ничьи - все девять комбинаций закрыты.</p>
+    </section>
+
+    <!-- Типичные ошибки -->
+    <section class="card">
+      <div class="kicker">Частые ошибки</div>
+      <h2>Что обычно делают неверно</h2>
+
+      <h3>Забыть про ничью</h3>
+      <p>Если в алгоритме только три правила «кто кого побеждает», то пара «камень против камня» не подходит ни под одно правило - алгоритм не знает, что ответить. Ничья - такое же правило игры, ее проверяют первой.</p>
+
+      <h3>Перепутать, кто кого побеждает</h3>
+      <p>Неверно считать, что «камень побеждает бумагу». На самом деле бумага накрывает камень - побеждает бумага. Помогает круг побед из схемы выше: каждый предмет бьет следующего по кругу.</p>
+
+      <h3>Расписывать все девять комбинаций</h3>
+      <p>Такой алгоритм работает, но он длинный, и при переписывании легко ошибиться:</p>
+      <pre><code>Шаг 3. Если у игрока 1 камень и у игрока 2 камень - ничья.
+Шаг 4. Если у игрока 1 камень и у игрока 2 ножницы - победил игрок 1.
+Далее еще семь похожих шагов - всего девять.</code></pre>
+      <p>Верно: три симметричных правила плюс ничья - те же девять случаев в четырех строчках. Проверка: <span class="pill res">9 из 9 комбинаций покрыты</span>.</p>
+    </section>
+  </main>
+
+  <footer>Пояснение к задачам сессии «Камень, ножницы, бумага»</footer>
+</div>
+</body>
+</html>
