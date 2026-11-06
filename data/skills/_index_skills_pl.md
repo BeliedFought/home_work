@@ -1,44 +1,44 @@
-# Индекс локальных навыков репозитория home_work
+# Local Repository Skills Index
 
-Точка входа в каталог `data/skills/`: перечисляет локальные навыки (слаг `pr_loc`) - плоские файлы и каталоги формата Anthropic. Локальные навыки в сводные индексы `_index_skills_hub.md` и `_index_skills_repo.md` не входят - они отражены здесь. Агент загружает индекс, а не каталог целиком, и по карте маршрутизации находит нужные навыки. Формируется автоматически навыком `glob-update-indexes`. Порядок принятия решений агентом при отсутствии нормы - `project_standards.md`, раздел 07.06.
-
----
-
-## Обязательность применения
-
-Тегание этого файла означает обязательное применение релевантных локальных навыков, а не просто ознакомление. Агент:
-
-1. Определяет релевантные навыки по карте маршрутизации
-2. Загружает указанные файлы навыков и выполняет их инструкции
-3. Применяет правила навыков при наличии соответствующей задачи, независимо от явного тегирования
+Entry point for `data/skills/` in `home_work`: lists local skills (`pr_loc`) excluded from shared indexes. Load this index rather than the full directory and use the routing map to open relevant skills. Decision order when norms are absent - `project_standards.md`, Section 07.06.
 
 ---
 
-## Реестр навыков
+## Mandatory Application
 
-| Навык | Класс | Область | Автоприменение | Версия | Назначение |
-|-------|-------|---------|----------------|--------|-----------|
+Tagging this file requires applying relevant local skills, not merely reading the index:
 
-## Навыки формата Anthropic Agent Skills (SKILL.md)
-
-| Навык (каталог) | Класс | Область | Версия | Назначение |
-|-----------------|-------|---------|--------|-----------|
-| `search-sources` | локальный | - | 0.1.0 | Задает порядок поиска источников при решении учебных задач: каскад project_standards.md 07.06, context7 для документации библиотек, GitHub MCP для практик и аналогов, веб-поиск для текстов ошибок |
-| `textbook` | локальный | - | 0.1.0 | Оформляет пояснение к задачам сессии в двух форматах - обычный текст и HTML-учебник со схемами-инфографикой по эталонному шаблону |
+1. Identify relevant skills via the routing map
+2. Open the matched skill files and follow their instructions
+3. Apply relevant skills whenever a matching task arises, even without explicit tagging
 
 ---
 
-## Карта маршрутизации
+## Skill Registry
 
-Карта связывает тип задачи с навыком. Агент открывает указанный навык и выполняет инструкцию. Темы - первичные, из описаний навыков: доработать формулировки по канону `index_nav_standards.md` (раздел 04) - от лица задачи пользователя, с синонимами-триггерами.
+| Skill | Class | Scope | Auto-Apply | Version | Purpose |
+|-------|-------|-------|------------|---------|---------|
 
-| Тема задачи | Навык |
-|-------------|-------|
-| Задает порядок поиска источников при решении учебных задач: каскад project_standards.md 07.06, context7 для документации библиотек, GitHub MCP для практик и аналогов, веб-поиск для текстов ошибок | `search-sources` |
+## Anthropic Agent Skills (SKILL.md)
+
+| Skill (dir) | Class | Scope | Version | Purpose |
+|-------------|-------|-------|---------|---------|
+| `search-sources` | local | - | 0.1.0 | Задает порядок поиска источников при решении учебных задач: каскад project_standards.md 07.06, context7 для документации библиотек, GitHub MCP для практик и аналогов, веб-поиск для текстов ошибок |
+| `textbook` | local | - | 0.1.0 | Оформляет пояснение к задачам сессии в двух форматах - обычный текст и HTML-учебник со схемами-инфографикой по эталонному шаблону |
+
+---
+
+## Routing Map
+
+Maps task topics to skills (`index_nav_standards.md`, Section 04).
+
+| Task Topic | Skill |
+|------------|-------|
+| Задает порядок поиска источников при решении учебных задач | `search-sources` |
 | Оформляет пояснение к задачам сессии в двух форматах - обычный текст и HTML-учебник со схемами-инфографикой по эталонному шаблону | `textbook` |
 
 ---
 
-## Автоактуализация индекса
+## Index Auto-Update
 
-При любом изменении состава `data/skills/` (добавление, удаление, переименование, изменение frontmatter навыка) пересобрать индекс навыком `glob-update-indexes`; заполнить назначения и доработать карту маршрутизации по канону `index_nav_standards.md` (разделы 03.03, 04). Вывести отчет: что добавлено, изменено, удалено.
+On any change to `data/skills/` (adding, removing, renaming, or updating skill frontmatter), rebuild this index with `glob-update-indexes`, refine purposes and routing map topics per `index_nav_standards.md` (Sections 03.03, 04), fix `metadata.purpose` and `metadata.topic` where the description yields a weak purpose or topic, and report added, updated, and removed entries.
